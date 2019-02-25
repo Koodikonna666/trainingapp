@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Trainings</title>
+</head>
+<body>
+
+	<h1>Your trainings</h1>
+
+	<table>
+		<tr>
+			<th>Nimi</th>
+			<th>Kategoria</th>
+			<th>Kesto</th>
+			<th>Kuvaus</th>
+		</tr>
+		
+		<tr th:each="training : ${trainings}">
+			<th th:text="$training.title"></th>
+			<th th:text="$training.category"></th>
+			<th th:text="$training.duration"></th>
+			<th th:text="$training.description"></th>
+		</tr>
+	</table>
+	
+	<a href="/addtraining">Add training</a>
+
+
+</body>
+</html>
