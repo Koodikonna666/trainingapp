@@ -15,9 +15,16 @@ public class Training {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long trainingId;
 	
-	private String title;
-	private double duration;
+	private int duration;
+	protected int durationHour;
+	protected int durationMin;
 	private String description;
+	private String date;
+	private String comment;
+	protected int reps;
+	protected int kg;
+	protected double km;
+	
 	
 	
 	@ManyToOne
@@ -29,27 +36,104 @@ public class Training {
 	
 	public Training() {
 		super();
-		this.title = null;
 		this.category = null;
 		this.duration = 0;
+		this.durationHour = 0;
+		this.durationMin = 0;
 		this.description = null;
+		this.comment = null;
+		this.date = null;
+		this.reps = 0;
+		this.kg = 0;
+		this.km = 0;
 		
 	}
 	
-	public Training(String title, Category category, double duration, String description) {
+	public Training(Category category, int duration, int durationHour, int durationMin, String comment, String description, String date, int reps, int kg, double km) {
 		super();
-		this.title = title;
 		this.category = category;
 		this.duration = duration;
+		this.durationHour = durationHour;
+		this.durationMin = durationMin;
 		this.description = description;
+		this.comment = comment;
+		this.date = date;	
+		this.kg = kg;
+		this.km = km;
+		this.reps = reps;
 		
-		
+	}
+	
+	
+	
+	public int getDuration() {
+		return duration;
+	}
+
+	public void setDuration(int duration) {
+		this.duration = duration;
+	}
+
+	public String getComment() {
+		return comment;
+	}
+
+	public void setComment(String comment) {
+		this.comment = comment;
+	}
+
+	public int getDurationHour() {
+		return durationHour;
+	}
+
+	public void setDurationHour(int durationHour) {
+		this.durationHour = durationHour;
+	}
+
+	public int getDurationMin() {
+		return durationMin;
+	}
+
+	public void setDurationMin(int durationMin) {
+		this.durationMin = durationMin;
+	}
+
+	public int getReps() {
+		return reps;
+	}
+
+	public void setReps(int reps) {
+		this.reps = reps;
+	}
+
+	public int getKg() {
+		return kg;
+	}
+
+	public void setKg(int kg) {
+		this.kg = kg;
+	}
+
+	public double getKm() {
+		return km;
+	}
+
+	public void setKm(double km) {
+		this.km = km;
 	}
 
 	
 	//Getterit ja Setterit
 	
 	
+	public String getDate() {
+		return date;
+	}
+
+	public void setDate(String date) {
+		this.date = date;
+	}
+
 	public Long getTrainingId() {
 		return trainingId;
 	}
@@ -66,22 +150,7 @@ public class Training {
 		this.category = category;
 	}
 
-	public String getTitle() {
-		return title;
-	}
-
-	public void setTitle(String title) {
-		this.title = title;
-	}
-
 	
-	public double getDuration() {
-		return duration;
-	}
-
-	public void setDuration(double duration) {
-		this.duration = duration;
-	}
 
 	public String getDescription() {
 		return description;
@@ -93,12 +162,15 @@ public class Training {
 
 	@Override
 	public String toString() {
-		return "Training [trainingId=" + trainingId + ", title=" + title + ", duration=" + duration + ", description="
-				+ description + ", category=" + category + "]";
+		return "Training [trainingId=" + trainingId + ", durationHour=" + durationHour + ", durationMin=" + durationMin
+				+ ", description=" + description + ", date=" + date + ", reps=" + reps + ", kg=" + kg + ", km=" + km
+				+ ", category=" + category + "]";
 	}
-	
 
 	
+	
+
+
 	
 	
 	

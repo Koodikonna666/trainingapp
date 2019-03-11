@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+    <head>
+    <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+        <title>Spring Security Example </title>
+        <link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}"/>
+    </head>
+    <body>
+    <nav>
+		<p>Trainingapp</p>
+		
+</nav>
+    <div id="login">
+    	<div class="login">
+	        <div th:if="${param.error}">
+	            <p>Väärä käyttäjänimi tai salasana.</p>
+	        </div>
+	        
+		    <div th:if="${param.logout}">
+		         <p>Sinut on kirjattu ulos.</p>
+		    </div>
+		        
+	        <form th:action="@{/login}" method="post">
+	            <div class="input-row"><label> Käyttäjänimi : <input type="text" name="username"/> </label></div>
+	            <div class="input-row"><label> Salasana: <input type="password" name="password"/> </label></div>
+	            <div><input class="login-button" type="submit" value="Kirjaudu sisään"/></div>
+	        </form>
+	      </div>
+       </div>
+       
+       <footer>
+	<p>Copyright @ Oskari Lehtonen</p>
+</footer>
+       
+    </body>
+</html>

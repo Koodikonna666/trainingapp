@@ -52,10 +52,20 @@ public class Category {
 		this.name = name;
 	}
 
+	public List<Training> getTrainings() {
+		return trainings;
+	}
+
+	public void setTrainings(List<Training> trainings) {
+		this.trainings = trainings;
+	}
+
 	@Override
 	public String toString() {
 		return "Category [categoryId=" + categoryId + ", name=" + name + "]";
 	}
+
+	
 	
 	
 	

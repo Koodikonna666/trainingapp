@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}"/>
+<script type="text/javascript" th:src="@{/javascript/javascript.js}"></script>
+<title>Uusi harjoitus</title>
+</head>
+<body>
+
+<nav>
+<p>Trainingapp</p>
+
+		<form th:action="@{/logout}" method="post">
+			<input type="submit" value="Kirjaudu ulos" class="logout-button"/>
+		</form>
+</nav>
+
+	<div class="add-training-box">
+
+
+	<h1>Lisää uusi harjoitus</h1>
+
+	<form id="add-training" action="#" th:action="@{/addtraining}" th:object=${training} method="post">
+	<div class="center">
+		<div class="add-training-field">
+			<label>Päivämäärä</label>
+			<input type="date" th:field="${training.date}">
+		</div>
+		
+		
+		<div class="add-training-field">
+		<label>Harjoituksen tyyppi</label>
+		<select id="deplist" th:field="*{category}" class="form-control">
+			<option th:each= "category : ${category}" th:value="${category.categoryId}" th:text="${category.name}"></option>
+		</select>
+		</div>
+		
+		<div class="add-training-field">
+		<label>Kuvaus</label>		
+		<input type="text" th:field="${training.description}">
+		</div>
+		
+		<div class="add-training-field">
+		<label>Kommentit</label>		
+		<input type="text" th:field="${training.comment}">
+		</div>
+		
+		<!--  
+		<ul id="event-list">
+			<li id ="duplicate">
+				<div class="event" >
+				
+				<div class="add-training-field">
+				<label>Liikkeen nimi</label>
+				<input type="text" th:field="${event.eventName}">
+				</div>
+				
+				<div class="add-training-field">
+				<label>Toistot</label>
+				<input type="text" th:field="${training.reps}">
+				</div>
+				
+				<div class="add-training-field">
+				<label>Kesto (h)</label>
+				<input type="text" th:field="${training.durationHour}">
+				</div>
+				
+				
+				<div class="add-training-field">
+				<label>Kesto (min)</label>
+				<input type="text" th:field="${training.durationMin}">
+				</div>
+				
+				<div class="add-training-field">
+				<label>Kilometrit</label>
+				<input type="text" th:field="${training.km}">
+				</div>
+				
+				<div class="add-training-field">
+				<label>Kilot</label>
+				<input type="text" th:field="${training.kg}">
+				</div>
+				</div>
+			</li>				
+		</ul>
+				
+				<button type="button" id="button" onClick="duplicate()">Click me!</button>
+				
+				-->
+				
+				<div class="border-top">
+				<div class="add-training-field">
+				<input class="add-training-submit training-button" type="submit" value="Lisää" /> <a class="training-button" href="/trainings">Peruuta</a>
+				</div>
+			</div>
+		
+	</div>
+	</form>
+	
+		
+		</div>
+
+<footer>
+	<p>Copyright @ Oskari Lehtonen</p>
+</footer>
+
+</body>
+</html>

@@ -1,31 +1,61 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
+<link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}"/>
 <title>Trainings</title>
 </head>
 <body>
 
-	<h1>Your trainings</h1>
+<nav>
+<p>Trainingapp</p>
+		<form th:action="@{/logout}" method="post">
+			<input type="submit" value="Kirjaudu ulos" class="logout-button"/>
+		</form>
+</nav>
 
-	<table>
-		<tr>
-			<th>Nimi</th>
-			<th>Kategoria</th>
-			<th>Kesto</th>
-			<th>Kuvaus</th>
-		</tr>
-		
-		<tr th:each="training : ${trainings}">
-			<th th:text="$training.title"></th>
-			<th th:text="$training.category"></th>
-			<th th:text="$training.duration"></th>
-			<th th:text="$training.description"></th>
-		</tr>
-	</table>
-	
-	<a href="/addtraining">Add training</a>
+<div class="trainings-all">
+	<div class="trainings-box">
+			<div>
+				
+			</div>
+			<h1 sec:authorize="hasAuthority('ATHLETE')">Sinun harjoitukset</h1>
+			<h1 sec:authorize="hasAuthority('COACH')">Oskarin harjoitukset</h1>
+			
+			<div>
+				<h3 th:inline="text">Tervetuloa [[${#httpServletRequest.remoteUser}]]</h3>
+			</div>
+			
+			<table class="table">
+				<tr>
+					<th>Pvm</th>
+					<th>Kategoria</th>
+					<th>Kesto (min)</th>
+					<th>Kuvaus</th>
+				</tr>
+				
+				<tr th:each="training : ${trainings}">
+					<td th:text="${training.date}"></td>
+					<td th:text="${training.category.name}"></td>
+					<td th:text="${training.duration}"></td>
+					<td class ="description" th:text="${training.description}"></td>
+					<td sec:authorize="hasAuthority('ATHLETE')"><a th:href="@{/delete/{id}(id=${training.trainingId})}" class="btn btn-danger">Delete</a></td>
+					
+				</tr>
+			</table><br/>
+			
+				<div class="border-top">
+				<div style="margin-top:30px;">
+				<a class="training-button" href="/addtraining">Lisää harjoitus</a>
+				</div>
+				</div>
+			</div>
+</div>
 
+<footer>
+	<p>Copyright @ Oskari Lehtonen</p>
+</footer>
 
 </body>
 </html>
