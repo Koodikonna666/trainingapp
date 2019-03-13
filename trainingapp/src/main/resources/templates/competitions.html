@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}"/>
+<script type="text/javascript" th:src="@{/javascript/javascript.js}"></script>
+<title>Kilpailu</title>
+</head>
+<body>
+
+<nav>
+<p>Trainingapp</p>
+
+		<form th:action="@{/logout}" method="post">
+			<input type="submit" value="Kirjaudu ulos" class="logout-button"/>
+			
+			
+		</form>
+		
+</nav>
+
+
+	<h1>Lisää uusi kilpailu</h1>
+	
+	<form id="add-competition" action="#" th:action="@{/competitions}" th:object=${competition} method="post">
+		<div>
+		
+		
+		
+			<label>Nimi</label>
+			<input type="text" th:field="${competition.name}">
+			<label>Paikka</label>
+			<input type="text" th:field="${competition.place}">
+			<label>Ajankohta</label>
+			<input type="date" th:field="${competition.date}">
+			<label>Matka(t)</label>
+			<input type="text" th:field="${competition.event}">
+			
+			
+			
+						<input class="add-training-submit training-button" type="submit" value="Lisää" /> <a class="training-button" href="/trainings">Peruuta</a>
+		</div>
+		
+	</form>
+
+	
+
+<footer>
+	<p>Copyright @ Oskari Lehtonen</p>
+</footer>
+
+</body>
+</html>

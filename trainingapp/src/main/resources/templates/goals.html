@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}"/>
+<script type="text/javascript" th:src="@{/javascript/javascript.js}"></script>
+<title>Uusi tavoite</title>
+</head>
+<body>
+
+<nav>
+<p>Trainingapp</p>
+
+		<form th:action="@{/logout}" method="post">
+			<input type="submit" value="Kirjaudu ulos" class="logout-button"/>
+			
+			
+		</form>
+		
+</nav>
+
+
+	<h1>Lisää uusi Tavoite</h1>
+	
+	<form id="add-goal" action="#" th:action="@{/goals}" th:object=${goal} method="post">
+		<div class="add-training-field">
+			<label>Tavoite</label>
+			<input type="text" th:field="${goal.name}">
+						<input class="add-training-submit training-button" type="submit" value="Lisää" /> <a class="training-button" href="/trainings">Peruuta</a>
+		</div>
+		
+	</form>
+
+	
+
+<footer>
+	<p>Copyright @ Oskari Lehtonen</p>
+</footer>
+
+</body>
+</html>

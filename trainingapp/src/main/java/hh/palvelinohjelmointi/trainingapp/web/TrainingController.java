@@ -12,7 +12,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import hh.palvelinohjelmointi.trainingapp.domain.CategoryRepository;
+import hh.palvelinohjelmointi.trainingapp.domain.Competition;
+import hh.palvelinohjelmointi.trainingapp.domain.CompetitionRepository;
 import hh.palvelinohjelmointi.trainingapp.domain.Event;
+import hh.palvelinohjelmointi.trainingapp.domain.Goal;
+import hh.palvelinohjelmointi.trainingapp.domain.GoalRepository;
 import hh.palvelinohjelmointi.trainingapp.domain.Training;
 import hh.palvelinohjelmointi.trainingapp.domain.TrainingRepository;
 
@@ -25,6 +29,11 @@ public class TrainingController {
 	@Autowired
 	private CategoryRepository categoryRepository;
 	
+	@Autowired
+	private GoalRepository goalRepository;
+	
+	@Autowired
+	private CompetitionRepository competitionRepository;
 	
 	
 	@RequestMapping(value="/login")
@@ -37,6 +46,10 @@ public class TrainingController {
 	public String getBooks(Model model) {
 		List<Training> trainings = (List<Training>) trainingRepository.findAll();
 		model.addAttribute("trainings", trainings);
+		List<Goal> goals = (List<Goal>) goalRepository.findAll();
+		model.addAttribute("goals", goals);
+		List<Competition> competitions = (List<Competition>) competitionRepository.findAll();
+		model.addAttribute("competitions", competitions);
 		return "traininglist";
 	}
 	
@@ -57,12 +70,60 @@ public class TrainingController {
 	
 	
 	
-    @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/deletetraining/{id}", method = RequestMethod.GET)
     public String deleteStudent(@PathVariable("id") Long trainingId, Model model) {
     	trainingRepository.deleteById(trainingId);
         return "redirect:../trainings";
     }     
+    
+    
+    
+    
+    
+	
+    
+	@PreAuthorize("hasAuthority('ATHLETE')")
+	@RequestMapping(value="/goals", method=RequestMethod.GET)
+	public String getNewGoalForm(Model model) {
+		model.addAttribute("goal", new Goal());
+		return "goals";
+	}
+	
+	@RequestMapping(value="/goals", method=RequestMethod.POST)
+	public String saveGoal(@ModelAttribute Goal goal) {
+		goalRepository.save(goal);
+		return "redirect:/trainings";
+	}
+	
+	@PreAuthorize("hasAuthority('ATHLETE')")
+    @RequestMapping(value = "/deletegoal/{id}", method = RequestMethod.GET)
+    public String deleteGoal(@PathVariable("id") Long goalId, Model model) {
+    	goalRepository.deleteById(goalId);
+        return "redirect:../trainings";
+    }     
+    
 	
 	
 	
+    
+	@PreAuthorize("hasAuthority('COACH')")
+	@RequestMapping(value="/competitions", method=RequestMethod.GET)
+	public String getNewCompetitionForm(Model model) {
+		model.addAttribute("competition", new Competition());
+		return "competitions";
+	}
+	
+	@RequestMapping(value="/competitions", method=RequestMethod.POST)
+	public String saveCompetition(@ModelAttribute Competition competition) {
+		competitionRepository.save(competition);
+		return "redirect:/trainings";
+	}
+	
+	@PreAuthorize("hasAuthority('COACH')")
+    @RequestMapping(value = "/deletecompetiton/{id}", method = RequestMethod.GET)
+    public String deleteCompetition(@PathVariable("id") Long competitionId, Model model) {
+    	competitionRepository.deleteById(competitionId);
+        return "redirect:../trainings";
+
+}
 }

@@ -1,5 +1,6 @@
 package hh.palvelinohjelmointi.trainingapp;
 
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
@@ -54,6 +55,9 @@ public class TrainingappApplication {
 			User user2 = new User("Vesa","$2a$10$0MMwY.IQqpsVc1jC8u7IJ.2rT8b0Cd3b3sfIBGV2zfgnPGtT4r0.C", "COACH" );
 			userRepository.save(user1);
 			userRepository.save(user2);
+			
+			
+			
 			
 			
 			
