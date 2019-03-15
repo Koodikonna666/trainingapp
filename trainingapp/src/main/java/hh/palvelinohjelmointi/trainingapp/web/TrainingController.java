@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -19,6 +20,8 @@ import hh.palvelinohjelmointi.trainingapp.domain.Goal;
 import hh.palvelinohjelmointi.trainingapp.domain.GoalRepository;
 import hh.palvelinohjelmointi.trainingapp.domain.Training;
 import hh.palvelinohjelmointi.trainingapp.domain.TrainingRepository;
+import hh.palvelinohjelmointi.trainingapp.domain.User;
+import hh.palvelinohjelmointi.trainingapp.domain.UserRepository;
 
 @Controller
 public class TrainingController {
@@ -35,11 +38,32 @@ public class TrainingController {
 	@Autowired
 	private CompetitionRepository competitionRepository;
 	
+	@Autowired
+	private UserRepository userRepository;
+	
 	
 	@RequestMapping(value="/login")
 	public String login() {
 		return "login";
 	}
+	
+
+	//Uusi käyttäjä
+	
+	
+	@RequestMapping(value="/newuser", method=RequestMethod.GET)
+	public String getNewUserForm(Model model) {
+		model.addAttribute("user", new User());
+		return "newuser";
+	}
+	
+	@RequestMapping(value="/newuser", method=RequestMethod.POST)
+	public String saveUser(@ModelAttribute User user) {
+		user.setPasswordHash(new BCryptPasswordEncoder().encode(user.getPasswordHash()));
+		userRepository.save(user);
+		return "redirect:/login";
+	}
+	
 	
 	
 	@RequestMapping(value="/trainings", method=RequestMethod.GET)

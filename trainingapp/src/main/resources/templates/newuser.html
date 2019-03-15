@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+    <head>
+    <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+        <title>Spring Security Example </title>
+        <link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}"/>
+    </head>
+    <body>
+   <nav>
+	<ul>
+		<li><a href="/trainings">Trainingapp</a></li>
+			
+	</ul>
+	
+	
+</nav>
+   <form id="add-training" action="#" th:action="@{/newuser}" th:object=${user} method="post">
+	<div class="center">
+		<div class="add-training-field">
+			<label>Käyttäjänimi</label>
+			<input type="text" th:field="${user.username}">
+		</div>
+		
+		<div class="add-training-field">
+				<label>Salasana</label>
+				<input type="password" th:field="${user.passwordHash}">
+		</div>
+		
+		
+		<div class="add-training-field">
+		<label>Rooli</label>
+		<select  th:field="${user.role}" class="form-control">
+			<option value="ATHLETE">Urheilija</option>
+			<option value="COACH">Valmentaja</option>
+		</select>
+		</div>
+		
+		<div class="add-training-field">
+				<input class="add-training-submit training-button" type="submit" value="Lisää" /> <a class="training-button" href="/login">Peruuta</a>
+				</div>
+		</div>
+		</form>
+       
+       
+       
+       <footer>
+	<p>Copyright @ Oskari Lehtonen</p>
+</footer>
+       
+    </body>
+</html>
