@@ -32,6 +32,58 @@ nav form{
 	
 }
 
+ul{
+	padding:0;
+	
+}
+
+li{
+	list-style-type:none;
+}
+
+table{
+	border-radius:10px;
+	border-collapse:collapse;
+	-webkit-box-shadow:0 0 20px grey;
+	margin: 0 auto;	
+	padding: 10px;
+	
+	
+}
+
+
+tr:nth-child(even){background-color: #f2f2f2;}
+
+td,th {
+  border: 1px solid #ddd;
+  text-align:left;
+  padding: 8px;
+  
+}
+
+
+nav ul{
+	display: flex;
+}
+
+nav li{
+	font-size: 1.2em;
+	padding-left: 30px;
+}
+
+
+.logout-button{
+	margin-left: auto;
+
+}
+
+
+
+
+
+.competition-list{
+	font-size: 0.8em;
+}
 
 
 
@@ -86,27 +138,32 @@ input[type="password"]
 	border-radius: 7px!important;
 }
 
-.logout-button{
-	font-size:1.25em;	
+.logout-button-style{
+	font-size:1em;	
 	border: none;
 	background-color: white;
 }
-.logout-button:hover{
-	background-color: #DDDDDD;
-	border-radius:5px;
+.logout-button-style:hover{
+	color: grey;
 }
 
 
 .goals-column{
+	margin-top:150px;
 	margin-left:10%;
-	-webkit-box-shadow:0 0 20px grey;
-	padding: 20px 0px 50px 0px;
 	
+}
+
+.competition-column{
+	margin-top:150px;
+	padding-right:10px;
 }
 
 .goals{
 	list-style-type:none;
-	padding:0;	
+	padding: 50px 0px;	
+	-webkit-box-shadow:0 0 20px grey;
+	
 }
 
 .goal{
@@ -124,13 +181,13 @@ input[type="password"]
 .column{
 	width:100%;
 	display:flex;
-	margin-top:100px;
 }
 
 .column-50{
 	width:48%;
 	margin: 0px 3%;
-}
+	padding-top:100px;
+	background-color:white}
 .column-25{
 	width:23%;
 	
@@ -155,9 +212,7 @@ margin: 0 auto;
 
 
 
-#event-list{
-	list-style-type:none;
-}
+
 
 .add-training-box{
 		margin-top:100px;
@@ -219,28 +274,15 @@ margin: 0 auto;
 	margin-top: 20px;
 }
 
-tr:nth-child(even){background-color: #f2f2f2;}
 
-td,th {
-  border: 1px solid #ddd;
-  text-align:left;
-  padding: 8px;
-}
-td{
-	height:30px;
-}
+
+
 
 .trainings-all{
 	text-align: center;
 }
-.table{
-	border-radius:10px;
-	border-collapse:collapse;
-	-webkit-box-shadow:0 0 20px grey;
-	margin: 0 auto;	
-	padding: 10px;
-	
-}
+
+
 
 
 .description{

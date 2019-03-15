@@ -10,6 +10,8 @@ import org.springframework.context.annotation.Bean;
 
 import hh.palvelinohjelmointi.trainingapp.domain.Category;
 import hh.palvelinohjelmointi.trainingapp.domain.CategoryRepository;
+import hh.palvelinohjelmointi.trainingapp.domain.Competition;
+import hh.palvelinohjelmointi.trainingapp.domain.CompetitionRepository;
 import hh.palvelinohjelmointi.trainingapp.domain.TrainingRepository;
 import hh.palvelinohjelmointi.trainingapp.domain.User;
 import hh.palvelinohjelmointi.trainingapp.domain.UserRepository;
@@ -25,7 +27,7 @@ public class TrainingappApplication {
 	}
 
 	@Bean
-	public CommandLineRunner trainingDemo(TrainingRepository trainingRepository, CategoryRepository categoryRepository, UserRepository userRepository) {
+	public CommandLineRunner trainingDemo(TrainingRepository trainingRepository, CategoryRepository categoryRepository, UserRepository userRepository, CompetitionRepository competitionRepository) {
 		return(args) ->{
 			log.info("Lisätään kategoriat");
 			
@@ -56,6 +58,11 @@ public class TrainingappApplication {
 			userRepository.save(user1);
 			userRepository.save(user2);
 			
+			
+			Competition example = new Competition("Kalevan Kisat", "Lappeenranta", "17-8-2019", "100m, 200m");
+			competitionRepository.save(example);
+			Competition example2 = new Competition("MM-kisat", "Doha", "10-10-2019", "4x100m");
+			competitionRepository.save(example2);
 			
 			
 			

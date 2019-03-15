@@ -9,14 +9,24 @@
 </head>
 <body>
 
+
 <nav>
-<p>Trainingapp</p>
-
-		<form th:action="@{/logout}" method="post">
-			<input type="submit" value="Kirjaudu ulos" class="logout-button"/>
-		</form>
+	<ul>
+		<li><a href="/trainings">Koti</a></li>
+		<li><a  sec:authorize="hasAuthority('ATHLETE')" href="/addtraining">Harjoitukset</a></li>
+		<li><a  sec:authorize="hasAuthority('ATHLETE')"  href="/goals">Tavoitteet</a></li>
+		<li><a  sec:authorize="hasAuthority('COACH')" href="/competitions">Kisat</a></li>
+				
+	</ul>
+	
+	<ul class="logout-button">
+		<li>
+			<form th:action="@{/logout}" method="post">
+				<input type="submit" value="Kirjaudu ulos" class="logout-button-style"/>
+			</form>
+		</li>
+	</ul>	
 </nav>
-
 	<div class="add-training-box">
 
 
@@ -107,8 +117,29 @@
 	</div>
 	</form>
 	
+
+	
 		
 		</div>
+		
+		
+			<table class="table">
+				<tr>
+					<th>Pvm</th>
+					<th>Kategoria</th>
+					<th>Kesto (min)</th>
+					<th>Kuvaus</th>
+				</tr>
+				
+				<tr th:each="training : ${trainings}">
+					<td th:text="${training.date}"></td>
+					<td th:text="${training.category.name}"></td>
+					<td th:text="${training.duration}"></td>
+					<td class ="description" th:text="${training.description}"></td>
+					<td sec:authorize="hasAuthority('ATHLETE')"><a th:href="@{/deletetraining/{id}(id=${training.trainingId})}" class="btn btn-danger">Poista</a></td>
+					
+				</tr>
+			</table>
 
 <footer>
 	<p>Copyright @ Oskari Lehtonen</p>

@@ -9,29 +9,35 @@
 <body>
 
 <nav>
-		<p>Trainingapp</p>
-
-				<a  sec:authorize="hasAuthority('ATHLETE')" class="training-button" href="/goals">Tavoitteet</a>
-				<a  sec:authorize="hasAuthority('COACH')" class="training-button" href="/competitions">Kisat</a>
-		<form th:action="@{/logout}" method="post">
-			<input type="submit" value="Kirjaudu ulos" class="logout-button"/>
-		</form>
-		
+	<ul>
+		<li><a href="/trainings">Koti</a></li>
+		<li><a  sec:authorize="hasAuthority('ATHLETE')" href="/addtraining">Harjoitukset</a></li>
+		<li><a  sec:authorize="hasAuthority('ATHLETE')"  href="/goals">Tavoitteet</a></li>
+		<li><a  sec:authorize="hasAuthority('COACH')" href="/competitions">Kisat</a></li>
+				
+	</ul>
+	
+	<ul class="logout-button">
+		<li>
+			<form th:action="@{/logout}" method="post">
+				<input type="submit" value="Kirjaudu ulos" class="logout-button-style"/>
+			</form>
+		</li>
+	</ul>	
 </nav>
 
 <div class="column">
 <div class="column-25">
 
 <div class="goals-column"> 
-	
-	<h1>Tavoitteet</h1>
-	
-	
-		
-				<ul class="goals">
-					<li class="goal" th:each= "goal : ${goals}" ><a th:text="${goal.name}" th:href="@{/deletegoal/{id}(id=${goal.goalId})}"></a></li>
-				</ul>
-	
+<h2>Tavoitteet</h2>
+
+
+	<div>		
+		<ul class="goals">
+			<li class="goal" th:each= "goal : ${goals}" ><a th:text="${goal.name}" th:href="@{/deletegoal/{id}(id=${goal.goalId})}"></a></li>
+		</ul>
+	</div>
 	
 </div>
 </div>
@@ -62,14 +68,13 @@
 					<td th:text="${training.category.name}"></td>
 					<td th:text="${training.duration}"></td>
 					<td class ="description" th:text="${training.description}"></td>
-					<td sec:authorize="hasAuthority('ATHLETE')"><a th:href="@{/deletetraining/{id}(id=${training.trainingId})}" class="btn btn-danger">Poista</a></td>
 					
 				</tr>
 			</table><br/>
 			
 				<div class="border-top">
 				<div style="margin-top:30px;">
-				<a class="training-button" href="/addtraining">Lisää harjoitus</a>
+				<a sec:authorize="hasAuthority('ATHLETE')" class="training-button" href="/addtraining">Lisää harjoitus</a>
 				</div>
 				</div>
 			</div>
@@ -77,26 +82,31 @@
 </div>
 <div class="column-25">
 
-	<ul>
-		<li th:each="competition : ${competitions}">
-			<div>
-				<table>
-					<tr>
-						<th>Nimi</th>
-						<th>Paikka</th>
-						<th>Pvm</th>
-						<th>Lajit</th>
-					</tr>
-					<tr>
-						<th><a th:text="${competition.name}"></a></th>
-						<th><a th:text="${competition.place}"></a></th>
-						<th><a th:text="${competition.date}"></a></th>
-						<th><a th:text="${competition.event}"></a></th>
-					</tr>				
-				</table>
-			</div>
-		 </li>
-	</ul>
+<div class="competition-column">
+	<h2>Tulevat kilpailut</h2>
+	
+		<ul>
+			<li>
+				<div>
+					<table class="competition-list">
+						<tr>
+							<th>Nimi</th>
+							<th>Paikka</th>
+							<th>Pvm</th>
+							<th>Lajit</th>
+						</tr>
+						<tr th:each="competition : ${competitions}">
+							<th th:text="${competition.name}"></th>
+							<th th:text="${competition.place}"></th>
+							<th th:text="${competition.date}"></th>
+							<th th:text="${competition.event}"></th>
+						</tr>				
+					</table>
+				</div>
+			 </li>
+		</ul>
+	
+</div>
 
 </div>
 </div>

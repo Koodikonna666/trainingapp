@@ -59,6 +59,8 @@ public class TrainingController {
 		model.addAttribute("training", new Training());
 		model.addAttribute("category", categoryRepository.findAll());
 		model.addAttribute("event", new Event());
+		List<Training> trainings = (List<Training>) trainingRepository.findAll();
+		model.addAttribute("trainings", trainings);
 		return "addtraining";
 	}
 	
@@ -73,7 +75,7 @@ public class TrainingController {
     @RequestMapping(value = "/deletetraining/{id}", method = RequestMethod.GET)
     public String deleteStudent(@PathVariable("id") Long trainingId, Model model) {
     	trainingRepository.deleteById(trainingId);
-        return "redirect:../trainings";
+        return "redirect:../addtraining";
     }     
     
     
@@ -110,20 +112,23 @@ public class TrainingController {
 	@RequestMapping(value="/competitions", method=RequestMethod.GET)
 	public String getNewCompetitionForm(Model model) {
 		model.addAttribute("competition", new Competition());
+		List<Competition> competitions = (List<Competition>) competitionRepository.findAll();
+		model.addAttribute("competitions", competitions);
 		return "competitions";
 	}
+	
 	
 	@RequestMapping(value="/competitions", method=RequestMethod.POST)
 	public String saveCompetition(@ModelAttribute Competition competition) {
 		competitionRepository.save(competition);
-		return "redirect:/trainings";
+		return "redirect:/competitions";
 	}
 	
 	@PreAuthorize("hasAuthority('COACH')")
-    @RequestMapping(value = "/deletecompetiton/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/deletecompetition/{id}", method = RequestMethod.GET)
     public String deleteCompetition(@PathVariable("id") Long competitionId, Model model) {
     	competitionRepository.deleteById(competitionId);
-        return "redirect:../trainings";
+        return "redirect:../competitions";
 
 }
 }
