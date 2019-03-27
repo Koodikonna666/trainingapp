@@ -52,18 +52,12 @@ public class Training {
 		
 	}
 	
-	public Training(Category category, int duration, int durationHour, int durationMin, String comment, String description, String date, int reps, int kg, double km) {
+	public Training(Category category, int duration, String description, String date) {
 		super();
 		this.category = category;
 		this.duration = duration;
-		this.durationHour = durationHour;
-		this.durationMin = durationMin;
 		this.description = description;
-		this.comment = comment;
-		this.date = date;	
-		this.kg = kg;
-		this.km = km;
-		this.reps = reps;
+		this.date = date;
 		
 	}
 	

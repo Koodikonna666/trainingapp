@@ -10,6 +10,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
 import hh.palvelinohjelmointi.trainingapp.web.UserDetailServiceImpl;
 
@@ -22,11 +23,18 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Autowired
 	private UserDetailServiceImpl userDetailsService;
 	
+	@Bean
+	public CommonsMultipartResolver filterMultipartResolver(){
+	    return new CommonsMultipartResolver();
+	}
 	
 	@Bean
 	public PasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
 	}
+	
+	
+	
 	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {

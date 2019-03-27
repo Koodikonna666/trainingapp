@@ -12,6 +12,9 @@ import hh.palvelinohjelmointi.trainingapp.domain.Category;
 import hh.palvelinohjelmointi.trainingapp.domain.CategoryRepository;
 import hh.palvelinohjelmointi.trainingapp.domain.Competition;
 import hh.palvelinohjelmointi.trainingapp.domain.CompetitionRepository;
+import hh.palvelinohjelmointi.trainingapp.domain.Goal;
+import hh.palvelinohjelmointi.trainingapp.domain.GoalRepository;
+import hh.palvelinohjelmointi.trainingapp.domain.Training;
 import hh.palvelinohjelmointi.trainingapp.domain.TrainingRepository;
 import hh.palvelinohjelmointi.trainingapp.domain.User;
 import hh.palvelinohjelmointi.trainingapp.domain.UserRepository;
@@ -27,7 +30,7 @@ public class TrainingappApplication {
 	}
 
 	@Bean
-	public CommandLineRunner trainingDemo(TrainingRepository trainingRepository, CategoryRepository categoryRepository, UserRepository userRepository, CompetitionRepository competitionRepository) {
+	public CommandLineRunner trainingDemo(TrainingRepository trainingRepository, CategoryRepository categoryRepository, UserRepository userRepository, CompetitionRepository competitionRepository, GoalRepository goalRepository) {
 		return(args) ->{
 			log.info("Lisätään kategoriat");
 			
@@ -64,7 +67,16 @@ public class TrainingappApplication {
 			Competition example2 = new Competition("MM-kisat", "Doha", "10-10-2019", "4x100m");
 			competitionRepository.save(example2);
 			
+			Goal goal1 = new Goal("100m alle 10.50");
+			goalRepository.save(goal1);
+			Goal goal2 = new Goal("100m alle 10.50");
+			goalRepository.save(goal2);
 			
+			
+			Training training1 = new Training(aerobia, 120, "Kävin lenkillä. Tein päkiähyppyjä sekä isovuorohyppyjä", "20-02-2019");
+			trainingRepository.save(training1);
+			Training training2 = new Training(nopeusvoima, 69, "Kävin puntilla. Tein räjähtäviä kyykkyjä, vatsalihaksia, pohkeita sekä penkkiä.", "20-02-2019");
+			trainingRepository.save(training2);
 			
 			
 			
