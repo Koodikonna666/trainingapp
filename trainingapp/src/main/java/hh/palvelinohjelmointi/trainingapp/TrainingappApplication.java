@@ -56,8 +56,8 @@ public class TrainingappApplication {
 			categoryRepository.save(kilpailu);
 			
 			
-			User user1 = new User("Oskari","$2a$06$3jYRJrg0ghaaypjZ/.g4SethoeA51ph3UD4kZi9oPkeMTpjKU5uo6", "ATHLETE" );
-			User user2 = new User("Vesa","$2a$10$0MMwY.IQqpsVc1jC8u7IJ.2rT8b0Cd3b3sfIBGV2zfgnPGtT4r0.C", "COACH" );
+			User user1 = new User("lehtonen.osku@gmail.com","$2a$06$3jYRJrg0ghaaypjZ/.g4SethoeA51ph3UD4kZi9oPkeMTpjKU5uo6", "ATHLETE", "Oskari", "Lehtonen", "Nurmijärven Yleisurheilu");
+			User user2 = new User("vebon@gmail.com","$2a$10$0MMwY.IQqpsVc1jC8u7IJ.2rT8b0Cd3b3sfIBGV2zfgnPGtT4r0.C", "COACH", "Vesa", "Sjöstedt", "HIFK" );
 			userRepository.save(user1);
 			userRepository.save(user2);
 			

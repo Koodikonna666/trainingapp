@@ -31,10 +31,10 @@
 <div class="column-25">
 
 <div class="goals-column"> 
-<h2>Tavoitteet</h2>
+<h2 class="center">Tavoitteet</h2>
 
 
-	<div>		
+	<div class="center">		
 		<ul class="goals">
 			<li class="goal" th:each= "goal : ${goals}" ><a th:text="${goal.name}" th:href="@{/deletegoal/{id}(id=${goal.goalId})}"></a></li>
 		</ul>
@@ -84,7 +84,7 @@
 <div class="column-25">
 
 <div class="competition-column">
-	<h2>Tulevat kilpailut</h2>
+	<h2 class="center">Tulevat kilpailut</h2>
 	
 		<ul>
 			<li>

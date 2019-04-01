@@ -7,46 +7,56 @@
         <link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}"/>
     </head>
     <body>
-   <nav>
-	<ul>
-		<li><a href="/trainings">Trainingapp</a></li>
-			
-	</ul>
-	
-	
-</nav>
-   <form id="add-training" action="#" th:action="@{/newuser}" th:object=${user} method="post">
-	<div class="center">
-		<div class="add-training-field">
-			<label>Käyttäjänimi</label>
-			<input type="text" th:field="${user.username}">
+ 
+ <div class="login-page">
+<div id="newuser">
+	<div class="login"> 
+   <form action="#" th:action="@{/newuser}" th:object=${user} method="post">
+   
+	<div>
+		<h1 style="margin-bottom:40px" class="center">Syötä tietosi</h1>
+		<div class="input-row">
+			<label>Sähköposti:</label>
+			<input type="email" th:field="${user.username}">
+		</div>
+		<div class="input-row">
+			<label>Etunimi:</label>
+			<input type="text" th:field="${user.firstName}">
+		</div>
+		<div class="input-row">
+			<label>Sukunimi:</label>
+			<input type="text" th:field="${user.lastName}">
+		</div>
+		<div class="input-row">
+			<label>Seura:</label>
+			<input type="text" th:field="${user.club}">
 		</div>
 		
-		<div class="add-training-field">
-				<label>Salasana</label>
+		<div class="input-row">
+				<label>Salasana:</label>
 				<input type="password" th:field="${user.passwordHash}">
 		</div>
 		
 		
-		<div class="add-training-field">
-		<label>Rooli</label>
+		<div class="input-row">
+		<label>Rooli:</label>
 		<select  th:field="${user.role}" class="form-control">
 			<option value="ATHLETE">Urheilija</option>
 			<option value="COACH">Valmentaja</option>
 		</select>
 		</div>
 		
-		<div class="add-training-field">
-				<input class="add-training-submit training-button" type="submit" value="Lisää" /> <a class="training-button" href="/login">Peruuta</a>
+		<div class="flex">
+				<input class="login-button" style="margin:0 auto; margin-top:20px; padding:0px 20px"  type="submit" value="Lisää" />
+				 <a class="registration-button" href="/login">Peruuta</a>
 				</div>
 		</div>
 		</form>
+       </div>
+       </div>
+       </div>
        
        
-       
-       <footer>
-	<p>Copyright @ Oskari Lehtonen</p>
-</footer>
        
     </body>
 </html>

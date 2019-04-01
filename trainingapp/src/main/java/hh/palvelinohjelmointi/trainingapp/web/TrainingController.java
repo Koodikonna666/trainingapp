@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import hh.palvelinohjelmointi.trainingapp.domain.CategoryRepository;
 import hh.palvelinohjelmointi.trainingapp.domain.Competition;
 import hh.palvelinohjelmointi.trainingapp.domain.CompetitionRepository;
-import hh.palvelinohjelmointi.trainingapp.domain.Event;
 import hh.palvelinohjelmointi.trainingapp.domain.Goal;
 import hh.palvelinohjelmointi.trainingapp.domain.GoalRepository;
 import hh.palvelinohjelmointi.trainingapp.domain.Training;
@@ -82,7 +81,6 @@ public class TrainingController {
 	public String getNewTrainingForm(Model model) {
 		model.addAttribute("training", new Training());
 		model.addAttribute("category", categoryRepository.findAll());
-		model.addAttribute("event", new Event());
 		List<Training> trainings = (List<Training>) trainingRepository.findAll();
 		model.addAttribute("trainings", trainings);
 		return "addtraining";

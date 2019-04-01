@@ -25,18 +25,76 @@ public class User {
 	@Column(name = "role", nullable =false)
 	private String role;
 	
+	@Column(name = "firstName", nullable =false)
+	private String firstName;
 	
+	@Column(name = "lastName", nullable =false)
+	private String lastName;
+	
+	@Column(name = "club", nullable =false)
+	private String club;
+	
+
+	
+
+
 	public User() {
 		
 	}
 	
 	
-	public User(String username, String passwordHash, String role) {
+	public User(String username, String passwordHash, String role, String firstName, String lastName, String club) {
 		super();
 		this.passwordHash = passwordHash;
-		this.username = username;
 		this.role = role;
+		this.username = username;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.club =club;
 	}
+
+	
+	
+	
+	public String getUsername() {
+		return username;
+	}
+
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+
+	public String getLastName() {
+		return lastName;
+	}
+
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+
+	public String getClub() {
+		return club;
+	}
+
+
+	public void setClub(String club) {
+		this.club = club;
+	}
+
 
 
 	public long getId() {
@@ -49,14 +107,8 @@ public class User {
 	}
 
 
-	public String getUsername() {
-		return username;
-	}
+	
 
-
-	public void setUsername(String username) {
-		this.username = username;
-	}
 
 
 	public String getPasswordHash() {

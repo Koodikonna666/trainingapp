@@ -19,8 +19,6 @@ public class Training {
 	private Long trainingId;
 	
 	private int duration;
-	protected int durationHour;
-	protected int durationMin;
 	private String description;
 	private String date;
 	private String comment;
@@ -41,8 +39,6 @@ public class Training {
 		super();
 		this.category = null;
 		this.duration = 0;
-		this.durationHour = 0;
-		this.durationMin = 0;
 		this.description = null;
 		this.comment = null;
 		this.date = null;
@@ -82,21 +78,6 @@ public class Training {
 		this.comment = comment;
 	}
 
-	public int getDurationHour() {
-		return durationHour;
-	}
-
-	public void setDurationHour(int durationHour) {
-		this.durationHour = durationHour;
-	}
-
-	public int getDurationMin() {
-		return durationMin;
-	}
-
-	public void setDurationMin(int durationMin) {
-		this.durationMin = durationMin;
-	}
 
 	public int getReps() {
 		return reps;
@@ -162,7 +143,7 @@ public class Training {
 
 	@Override
 	public String toString() {
-		return "Training [trainingId=" + trainingId + ", durationHour=" + durationHour + ", durationMin=" + durationMin
+		return "Training [trainingId=" + trainingId + ", durationHour=" + ", durationMin="
 				+ ", description=" + description + ", date=" + date + ", reps=" + reps + ", kg=" + kg + ", km=" + km
 				+ ", category=" + category + "]";
 	}
