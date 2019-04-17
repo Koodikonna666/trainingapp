@@ -3,8 +3,27 @@
 <head>
     <title>Files</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}"/>
+
 </head>
 <body>
+<nav>
+	<ul>
+		<li><a href="/trainings">Koti</a></li>
+		<li><a  sec:authorize="hasAuthority('ATHLETE')" href="/addtraining">Harjoitukset</a></li>
+		<li><a  sec:authorize="hasAuthority('ATHLETE')"  href="/goals">Tavoitteet</a></li>
+		<li><a  sec:authorize="hasAuthority('COACH')" href="/competitions">Kisat</a></li>
+				
+	</ul>
+	
+	<ul class="logout-button">
+		<li>
+			<form th:action="@{/logout}" method="post">
+				<input type="submit" value="Kirjaudu ulos" class="logout-button-style"/>
+			</form>
+		</li>
+	</ul>	
+</nav>
 	<h1>Harjoitusohjelmat</h1>
     <table>
 		<tr>

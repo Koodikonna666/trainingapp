@@ -34,19 +34,25 @@
 		<div>
 		
 		
-		
+		<div class="add-training-field">
 			<label>Nimi</label>
 			<input type="text" th:field="${competition.name}">
+			</div>
+		<div class="add-training-field">
 			<label>Paikka</label>
 			<input type="text" th:field="${competition.place}">
+			</div>
+			<div class="add-training-field">
 			<label>Ajankohta</label>
 			<input type="date" th:field="${competition.date}">
+			</div>
+			<div class="add-training-field">
 			<label>Matka(t)</label>
 			<input type="text" th:field="${competition.event}">
-			
-			
-			
-						<input class="add-training-submit training-button" type="submit" value="Lisää" /> <a class="training-button" href="/trainings">Peruuta</a>
+			</div>
+			<div style="width:200px">
+			<input type="submit" value="Lisää" /> <a href="/trainings">Peruuta</a>
+		</div>
 		</div>
 		
 	</form>

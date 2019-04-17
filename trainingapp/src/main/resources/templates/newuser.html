@@ -16,21 +16,18 @@
 	<div>
 		<h1 style="margin-bottom:40px" class="center">Syötä tietosi</h1>
 		<div class="input-row">
-			<label>Sähköposti:</label>
-			<input type="email" th:field="${user.username}">
-		</div>
-		<div class="input-row">
-			<label>Etunimi:</label>
-			<input type="text" th:field="${user.firstName}">
-		</div>
-		<div class="input-row">
-			<label>Sukunimi:</label>
-			<input type="text" th:field="${user.lastName}">
+			<label>Käyttäjänimi:</label>
+			<input type="text" th:field="${user.username}">
 		</div>
 		<div class="input-row">
 			<label>Seura:</label>
 			<input type="text" th:field="${user.club}">
 		</div>
+		<div class="input-row">
+			<label>Sähköposti:</label>
+			<input type="text" th:field="${user.email}">
+		</div>
+	
 		
 		<div class="input-row">
 				<label>Salasana:</label>

@@ -56,8 +56,8 @@ public class TrainingappApplication {
 			categoryRepository.save(kilpailu);
 			
 			
-			User user1 = new User("lehtonen.osku@gmail.com","$2a$06$3jYRJrg0ghaaypjZ/.g4SethoeA51ph3UD4kZi9oPkeMTpjKU5uo6", "ATHLETE", "Oskari", "Lehtonen", "Nurmijärven Yleisurheilu");
-			User user2 = new User("vebon@gmail.com","$2a$10$0MMwY.IQqpsVc1jC8u7IJ.2rT8b0Cd3b3sfIBGV2zfgnPGtT4r0.C", "COACH", "Vesa", "Sjöstedt", "HIFK" );
+			User user1 = new User("Oskari","$2a$06$3jYRJrg0ghaaypjZ/.g4SethoeA51ph3UD4kZi9oPkeMTpjKU5uo6", "ATHLETE", "Nurmijärven Yleisurheilu", "lehtonen.osku@gmail.com");
+			User user2 = new User("Vesa","$2a$10$0MMwY.IQqpsVc1jC8u7IJ.2rT8b0Cd3b3sfIBGV2zfgnPGtT4r0.C", "COACH", "HIFK", "vebon@gmail.com");
 			userRepository.save(user1);
 			userRepository.save(user2);
 			
@@ -69,7 +69,7 @@ public class TrainingappApplication {
 			
 			Goal goal1 = new Goal("100m alle 10.50");
 			goalRepository.save(goal1);
-			Goal goal2 = new Goal("100m alle 10.50");
+			Goal goal2 = new Goal("200m alle 20.70");
 			goalRepository.save(goal2);
 			
 			

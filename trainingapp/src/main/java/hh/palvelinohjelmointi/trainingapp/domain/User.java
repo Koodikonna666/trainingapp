@@ -25,16 +25,8 @@ public class User {
 	@Column(name = "role", nullable =false)
 	private String role;
 	
-	@Column(name = "firstName", nullable =false)
-	private String firstName;
-	
-	@Column(name = "lastName", nullable =false)
-	private String lastName;
-	
-	@Column(name = "club", nullable =false)
+	private String email;
 	private String club;
-	
-
 	
 
 
@@ -43,46 +35,26 @@ public class User {
 	}
 	
 	
-	public User(String username, String passwordHash, String role, String firstName, String lastName, String club) {
+	public User(String username, String passwordHash, String role, String club, String email) {
 		super();
 		this.passwordHash = passwordHash;
 		this.role = role;
 		this.username = username;
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.club =club;
+		this.club = club;
+		this.email = email;
+	
 	}
 
 	
 	
 	
-	public String getUsername() {
-		return username;
+	public String getEmail() {
+		return email;
 	}
 
 
-	public void setUsername(String username) {
-		this.username = username;
-	}
-
-
-	public String getFirstName() {
-		return firstName;
-	}
-
-
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
-
-
-	public String getLastName() {
-		return lastName;
-	}
-
-
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 
@@ -93,6 +65,16 @@ public class User {
 
 	public void setClub(String club) {
 		this.club = club;
+	}
+
+
+	public String getUsername() {
+		return username;
+	}
+
+
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
 
